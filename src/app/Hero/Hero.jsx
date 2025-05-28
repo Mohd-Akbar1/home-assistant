@@ -1,6 +1,17 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const Hero = () => {
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/demo');
+  };
+
+
   return (
     <div>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -31,11 +42,11 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
                   id="voiceDemoBtn"
-                  className="neural-gradient px-8 py-4 rounded-full text-white font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-glow"
+                  className="neural-gradient px-8 py-4 cursor-pointer rounded-full text-white font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-glow"
                 >
                   🎙️ Try Voice Demo
-                </button>
-                <button className="glass-effect px-8 py-4 rounded-full text-white font-semibold text-lg hover:bg-white hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105">
+                </button >
+                <button onClick={handleClick} className="glass-effect cursor-pointer px-8 py-4 rounded-full text-white font-semibold text-lg hover:bg-white hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105">
                   📞 Call Demo
                 </button>
               </div>

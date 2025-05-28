@@ -1,26 +1,133 @@
 @import "tailwindcss";
-
+/* === Neural Color Palette as CSS Custom Properties === */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --neural-blue: #6366f1;
+  --neural-purple: #8b5cf6;
+  --neural-cyan: #06b6d4;
+  --neural-dark: #0f172a;
+  --neural-darker: #020617;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body{
+  background-color:#020617 ;
+}
+.text-neural-blue {
+  color: var(--neural-blue);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.text-neural-dark {
+  color: var(--neural-dark);
+}
+
+.bg-neural-blue {
+  background-color: var(--neural-blue);
+}
+
+.bg-neural-dark {
+  background-color: var(--neural-dark);
+}
+
+.hover\:text-neural-blue:hover {
+  color: var(--neural-blue);
+}
+/* === Keyframes === */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* === Animations === */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+/* === Utility & Gradient Effects === */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.neural-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.hero-gradient {
+  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, var(--neural-blue), var(--neural-purple), var(--neural-cyan), var(--neural-blue));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2.5s infinite;
+}
+
+.blob-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+  filter: blur(1px);
 }
